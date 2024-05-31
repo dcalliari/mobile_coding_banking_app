@@ -1,20 +1,32 @@
 import 'package:flutter/material.dart';
 
-class MySignUpPage extends StatefulWidget {
-  const MySignUpPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<MySignUpPage> createState() => _MySignUpPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _MySignUpPageState extends State<MySignUpPage> {
+class _SignUpPageState extends State<SignUpPage> {
   bool showPassword = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: <Widget>[
+          children: [
+            const SizedBox(
+              height: 80,
+            ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: Image.asset(
+                'assets/logo.png',
+                width: 200,
+                height: 200,
+              ),
+            ),
             const SizedBox(height: 40),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -63,7 +75,7 @@ class _MySignUpPageState extends State<MySignUpPage> {
             const SizedBox(height: 40),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/inicial');
+                Navigator.pushNamed(context, '/home');
               },
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
@@ -106,7 +118,7 @@ class _MySignUpPageState extends State<MySignUpPage> {
                 const Text('Já possui conta?'),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/login');
+                    Navigator.pushNamed(context, '/signin');
                   },
                   style: TextButton.styleFrom(),
                   child: const Text('Faça login'),

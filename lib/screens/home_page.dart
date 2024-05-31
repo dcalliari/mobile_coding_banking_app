@@ -1,106 +1,240 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_coding_banking_app/components/home_navigator.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({
+    super.key,
+  });
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  HomeNavigator homeNavigator = const HomeNavigator();
+class _HomePageState extends State<HomePage> {
+  int selectedIndex = 0;
+
+  void onItemTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+
+    if (index == 1) {
+      Navigator.pushNamed(context, '/transfer');
+    } else if (index == 2) {
+      Navigator.pushNamed(context, '/currency');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.black,
-        title: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      backgroundColor: Colors.grey[300],
+      body: SingleChildScrollView(
+        child: Stack(
           children: [
-            Icon(
-              Icons.person,
-              size: 40,
-              color: Colors.white,
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Olá, usuário',
-              style: TextStyle(
-                color: Colors.white,
+            Container(
+              height: 200,
+              decoration: BoxDecoration(
+                color: Colors.orange[900],
+                borderRadius: const BorderRadius.vertical(
+                  bottom: Radius.circular(10),
+                ),
               ),
             ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
-        ],
-        toolbarHeight: 120,
-      ),
-      body: Container(
-        color: Colors.grey[300],
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Card(
-                elevation: 4,
-                child: Column(
-                  children: [
-                    const ListTile(
-                      title: Text('Conta digital'),
-                      subtitle: Text(
-                        'R\$ 871,93',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 10),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Olá, Usuário',
+                        style: TextStyle(fontSize: 26, color: Colors.white),
                       ),
-                      trailing: Icon(Icons.arrow_forward_ios),
+                      Icon(
+                        Icons.person,
+                        size: 40,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  Text(
+                    'MEU SALDO ATUAL',
+                    style: TextStyle(fontSize: 16, color: Colors.grey[400]),
+                  ),
+                  const SizedBox(height: 5),
+                  const Text(
+                    'R\$ 2.000,00',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+                  ),
+                  const SizedBox(height: 15),
+                  const Card(
+                    elevation: 5,
+                    child: Padding(
+                      padding: EdgeInsets.all(16.0),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SizedBox(
-                            width: 130,
-                            height: 50,
-                            child: ElevatedButton.icon(
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/transfer');
-                              },
-                              icon: const Icon(Icons.qr_code),
-                              label: const Text('Pix'),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.grey[300],
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.credit_card,
+                                size: 40,
+                                color: Colors.black,
                               ),
-                            ),
+                              SizedBox(width: 8),
+                              Text(
+                                'Débito e Crédito',
+                                style: TextStyle(fontSize: 18),
+                              ),
+                            ],
                           ),
-                          SizedBox(
-                            width: 130,
-                            height: 50,
-                            child: ElevatedButton.icon(
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/currency');
-                              },
-                              icon: const Icon(Icons.show_chart),
-                              label: const Text('Cotação'),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.grey[300],
-                              ),
-                            ),
+                          Text(
+                            'Final 6103',
+                            style: TextStyle(fontSize: 18),
                           ),
                         ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 16),
+                  Card(
+                    elevation: 5,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'FATURA ATUAL',
+                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                          ),
+                          const SizedBox(height: 8),
+                          const Text(
+                            'R\$ 1.000,00',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          const Text(
+                            'Limite disponível: R\$ 4.000,00',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.green,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          LinearProgressIndicator(
+                            value: 1000 / 5000,
+                            backgroundColor: Colors.grey[300],
+                            color: Colors.deepPurple,
+                          ),
+                          const SizedBox(height: 16),
+                          const Text(
+                            'Limite total: 5.000,00',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          const SizedBox(height: 8),
+                          const Text(
+                            'Vencimento da fatura: 25/jul',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          const SizedBox(height: 16),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: const Text('Ver faturas'),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Wrap(
+                    alignment: WrapAlignment.spaceAround,
+                    spacing: 3,
+                    runSpacing: 3,
+                    children: [
+                      _buildOptionCard(
+                        icon: Icons.credit_card,
+                        label: 'Cartão Virtual',
+                        onTap: () {},
+                      ),
+                      _buildOptionCard(
+                        icon: Icons.payment,
+                        label: 'Débito',
+                        onTap: () {},
+                      ),
+                      _buildOptionCard(
+                        icon: Icons.pix,
+                        label: 'Área Pix',
+                        onTap: () {},
+                      ),
+                      _buildOptionCard(
+                        icon: Icons.phone_android,
+                        label: 'Recarga de Celular',
+                        onTap: () {},
+                      ),
+                      _buildOptionCard(
+                        icon: Icons.monetization_on,
+                        label: 'Empréstimo',
+                        onTap: () {},
+                      ),
+                      _buildOptionCard(
+                        icon: Icons.more_horiz,
+                        label: 'Mais Opções',
+                        onTap: () {},
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.all(8),
+        margin: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
+        decoration: BoxDecoration(
+          color: Colors.black,
+          borderRadius: BorderRadius.circular(24),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 10,
+              offset: Offset(0, 4),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(24),
+          child: BottomNavigationBar(
+            backgroundColor: Colors.transparent,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white60,
+            currentIndex: selectedIndex,
+            onTap: onItemTapped,
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.compare_arrows),
+                label: 'Transferências',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.show_chart),
+                label: 'Cotação',
               ),
             ],
           ),
@@ -108,4 +242,37 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
+
+Widget _buildOptionCard({
+  required IconData icon,
+  required String label,
+  required VoidCallback onTap,
+}) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      elevation: 5,
+      child: Container(
+        width: 95,
+        height: 110,
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, size: 40, color: Colors.black),
+            const SizedBox(height: 8),
+            Text(
+              label,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 10),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
 }

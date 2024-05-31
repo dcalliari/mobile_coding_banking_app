@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MySignInPage extends StatefulWidget {
-  const MySignInPage({super.key});
+class SignInPage extends StatefulWidget {
+  const SignInPage({super.key});
 
   @override
-  State<MySignInPage> createState() => _MySignInPageState();
+  State<SignInPage> createState() => _SignInPageState();
 }
 
-class _MySignInPageState extends State<MySignInPage> {
+class _SignInPageState extends State<SignInPage> {
   bool showPassword = false;
 
   @override
@@ -15,7 +15,18 @@ class _MySignInPageState extends State<MySignInPage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: <Widget>[
+          children: [
+            const SizedBox(
+              height: 80,
+            ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+              child: Image.asset(
+                'assets/logo.png',
+                width: 200,
+                height: 200,
+              ),
+            ),
             const SizedBox(height: 40),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
@@ -61,7 +72,7 @@ class _MySignInPageState extends State<MySignInPage> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/inicial');
+                Navigator.pushNamed(context, '/home');
               },
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
@@ -104,7 +115,7 @@ class _MySignInPageState extends State<MySignInPage> {
                 const Text('Não possui conta?'),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/cadastro');
+                    Navigator.pushNamed(context, '/signup');
                   },
                   style: TextButton.styleFrom(),
                   child: const Text('Cadastre-se agora'),
