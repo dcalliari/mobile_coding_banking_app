@@ -48,7 +48,7 @@ class _CurrencyPageState extends State<CurrencyPage> {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         setState(() {
-          result = data['conversion_result'].toString();
+          result = toCurrency + data['conversion_result'].toString();
           exchangeRate = data['conversion_rate'];
         });
       } else {
@@ -167,7 +167,7 @@ class _CurrencyPageState extends State<CurrencyPage> {
                       style: TextStyle(fontSize: 24),
                     ),
                     Text(
-                      '$toCurrency$result',
+                      '$result',
                       style: const TextStyle(
                           fontSize: 36, fontWeight: FontWeight.bold),
                     ),

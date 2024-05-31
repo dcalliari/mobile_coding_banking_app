@@ -1,4 +1,4 @@
-package com.example.mobile_coding_banking_app
+package com.calliari.banco_777
 
 import io.flutter.embedding.android.FlutterActivity
 

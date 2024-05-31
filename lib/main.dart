@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:mobile_coding_banking_app/screens/home_page.dart';
-import 'package:mobile_coding_banking_app/auth/sign_in_page.dart';
-import 'package:mobile_coding_banking_app/auth/sign_up_page.dart';
-import 'package:mobile_coding_banking_app/screens/currency_page.dart';
-import 'package:mobile_coding_banking_app/screens/transfer_page.dart';
+import 'package:banco_777/screens/home_page.dart';
+import 'package:banco_777/auth/sign_in_page.dart';
+import 'package:banco_777/auth/sign_up_page.dart';
+import 'package:banco_777/screens/currency_page.dart';
+import 'package:banco_777/screens/transfer_page.dart';
 
 void main() {
   runApp(const MyApp());

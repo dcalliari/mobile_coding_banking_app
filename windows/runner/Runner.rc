@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "mobile_coding_banking_app" "\0"
+            VALUE "CompanyName", "com.calliari" "\0"
+            VALUE "FileDescription", "banco_777" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "mobile_coding_banking_app" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "mobile_coding_banking_app.exe" "\0"
-            VALUE "ProductName", "mobile_coding_banking_app" "\0"
+            VALUE "InternalName", "banco_777" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 com.calliari. All rights reserved." "\0"
+            VALUE "OriginalFilename", "banco_777.exe" "\0"
+            VALUE "ProductName", "banco_777" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
